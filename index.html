@@ -274,33 +274,32 @@
       <h2 class="title is-3=">ChartDQA</h2>
       
       <!-- Framework Row -->
-      <h2 class="title is-4">Quadratic-scale data generation pipeline</h2>
+      <h2 class="title is-4">Deep-Dive QA for Every Chart, From Literal to Reasoned Insights</h2>
       <div class="columns is-vcentered">
-        <div class="column is-three-fifths">
+        <div class="column is-zero-fifths">
           <figure class="image is-6by3">
-            <img src="./static/images/framework_1.png" alt="Framework Diagram Placeholder">
+            <img src="./static/images/chartscope.png" alt="Framework Diagram Placeholder">
           </figure>
         </div>
         <div class="column">
           <p>
-            Our data generation leverages the promising text content generation and coding abilities of current large language models, e.g., GPT, to generate chart images and data. Specifically, LLMs allow us to synthesize raw data for charts, and then the generated Python script turns the raw data into a chart image. In this way, we can produce image data without accessing costly multimodal LLMs. Unlike previous works that prompt LLMs to iteratively generate CSV data, QAs, and Python script for each chart image -- a process that is costly to massively scale -- our pipeline features parallel code and data generation through shared templates and
-            READMEs for consistent definitions and formats across the same chart types.
+            We propose ChartDQA, a benchmark derived from the aforementioned synthetic dataset. It includes 20 different chart types, three levels of question–answer pairs (literal, inferential, and reasoning), and provides both long and short answers. Notably, by including three levels of QAs for each chart image, ChartDQA enables assessment of a model's ability to understand charts at varying depths—much like a human would.
           </p>
         </div>
       </div>
 
       <!-- Training Strategy Row -->
-      <h2 class="title is-4">Dual-Path training with augmented QAs</h2>
+      <h2 class="title is-4">Assessing the comprehension of underlying data across all chart images</h2>
       <div class="columns is-vcentered">
         <div class="column is-two-third">
           <p>
-            Unlike generic image understanding, chart image understanding requires the model to not only comprehend the underlying data of the chart but also perform reasoning to obtain the final answers. To enhance the in-depth understanding of the model, we introduce Dual-Path training, built on top of the general chart QA pairs by including two additional augmented QAs: Data-driven QAs and JSON-only QAs. Data-driven QAs are multi-turn QAs that first prompt the model to extract JSON raw data given a chart and then answering the question based on the extracted JSON and chart. JSON-only QAs are instead a pure text QAs. Our goal is to preserve the reasoning ability of LLMs when extending to the chart domain.
+            Besides chart comprehension, we also evaluate the model's understanding of the underlying data of the chart. Specifically, for each chart image, we provide the raw data in JSON and CSV formats, allowing assessment of the model's ability to understand the underlying data across various chart types. This is crucial for chart comprehension, as it enables the model to reason about the data and provide more accurate answers.
           </p>
         </div>
         
         <div class="column">
           <figure class="image is-6by3">
-            <img src="./static/images/framework_2.png" alt="Training Strategy Placeholder">
+            <img src="./static/images/chartdqa.png" alt="Training Strategy Placeholder">
           </figure>
           
         </div>
